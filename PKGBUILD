@@ -21,7 +21,7 @@ source=(dmenu-caseinsensitive.diff
 md5sums=(
     '45abef30f540d2c800294255a26c9397'
     '0e35d7b332e741efe0cd989bc36419f8'
-    '62588a28317bec61feb496ebe087baa1'
+    'b4c6d5b94d0fa4f6e92bd93567607ebf'
     'SKIP')
 
 pkgver() {
