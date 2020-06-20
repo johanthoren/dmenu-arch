@@ -17,11 +17,17 @@ conflicts=('dmenu')
 source=(dmenu-caseinsensitive.diff
         dmenu-fuzzymatch.diff
         dmenu-fuzzyhighlight.diff
+        dmenu-password.diff
+        dmenu-preselect.diff
+        dmenu-navhistory.diff
         "$_pkgname::git+https://git.suckless.org/dmenu")
 md5sums=(
     '45abef30f540d2c800294255a26c9397'
     '0e35d7b332e741efe0cd989bc36419f8'
     'b4c6d5b94d0fa4f6e92bd93567607ebf'
+    '2e17f7a95c9483e118ec60e5c078264f'
+    'f2024840bf3750ebd8a9cdc128c32048'
+    '4efc4c3ece55421a074b7c8185034cd2'
     'SKIP')
 
 pkgver() {
@@ -42,6 +48,22 @@ prepare() {
   echo "Adding fuzzyhighlight patch:"
   patch --forward --strip=1 --input="${srcdir}/dmenu-fuzzyhighlight.diff"
   echo ""
+
+  echo "Adding password patch:"
+  patch --forward --strip=1 --input="${srcdir}/dmenu-password.diff"
+  echo ""
+
+  echo "Adding preselect patch:"
+  patch --forward --strip=1 --input="${srcdir}/dmenu-preselect.diff"
+  echo ""
+
+  echo "Adding navhistory patch:"
+  patch --forward --strip=1 --input="${srcdir}/dmenu-navhistory.diff"
+  echo ""
+
+  # echo "Adding password patch:"
+  # patch --forward --strip=1 --input="${srcdir}/dmenu-password.diff"
+  # echo ""
 
   # This package provides a mechanism to provide a custom config.h. Multiple
   # configuration states are determined by the presence of two files in
