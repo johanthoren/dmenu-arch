@@ -4,7 +4,7 @@ note: This patch is meant to be used together with fuzzymatch
 diff -upN dmenu-4.9/config.def.h dmenu-4.9-fuzzyhighlight/config.def.h
 --- dmenu-4.9/config.def.h	2019-02-02 13:55:02.000000000 +0100
 +++ dmenu-4.9-fuzzyhighlight/config.def.h	2020-04-04 10:26:36.990890854 +0200
-@@ -11,6 +11,8 @@ static const char *colors[SchemeLast][2]
+@@ -12,6 +12,8 @@ static const char *colors[SchemeLast][2]
  	/*     fg         bg       */
  	[SchemeNorm] = { "#bbbbbb", "#222222" },
  	[SchemeSel] = { "#eeeeee", "#005577" },
@@ -53,7 +53,7 @@ diff -upN dmenu-4.9/dmenu.1 dmenu-4.9-fuzzyhighlight/dmenu.1
 diff -upN dmenu-4.9/dmenu.c dmenu-4.9-fuzzyhighlight/dmenu.c
 --- dmenu-4.9/dmenu.c	2019-02-02 13:55:02.000000000 +0100
 +++ dmenu-4.9-fuzzyhighlight/dmenu.c	2020-04-04 10:27:43.888026309 +0200
-@@ -26,7 +26,9 @@
+@@ -27,7 +27,9 @@
  #define TEXTW(X)              (drw_fontset_getwidth(drw, (X)) + lrpad)
  
  /* enums */
@@ -64,7 +64,7 @@ diff -upN dmenu-4.9/dmenu.c dmenu-4.9-fuzzyhighlight/dmenu.c
  
  struct item {
  	char *text;
-@@ -113,9 +115,49 @@ cistrstr(const char *s, const char *sub)
+@@ -116,9 +118,49 @@ cistrstr(const char *s, const char *sub)
  	return NULL;
  }
  
@@ -114,7 +114,7 @@ diff -upN dmenu-4.9/dmenu.c dmenu-4.9-fuzzyhighlight/dmenu.c
  	if (item == sel)
  		drw_setscheme(drw, scheme[SchemeSel]);
  	else if (item->out)
-@@ -123,7 +165,9 @@ drawitem(struct item *item, int x, int y
+@@ -126,7 +168,9 @@ drawitem(struct item *item, int x, int y
  	else
  		drw_setscheme(drw, scheme[SchemeNorm]);
  
@@ -125,7 +125,7 @@ diff -upN dmenu-4.9/dmenu.c dmenu-4.9-fuzzyhighlight/dmenu.c
  }
  
  static void
-@@ -683,7 +727,8 @@ static void
+@@ -778,7 +822,8 @@ static void
  usage(void)
  {
  	fputs("usage: dmenu [-bfiv] [-l lines] [-p prompt] [-fn font] [-m monitor]\n"
@@ -135,7 +135,7 @@ diff -upN dmenu-4.9/dmenu.c dmenu-4.9-fuzzyhighlight/dmenu.c
  	exit(1);
  }
  
-@@ -724,6 +769,14 @@ main(int argc, char *argv[])
+@@ -821,6 +866,14 @@ main(int argc, char *argv[])
  			colors[SchemeSel][ColBg] = argv[++i];
  		else if (!strcmp(argv[i], "-sf"))  /* selected foreground color */
  			colors[SchemeSel][ColFg] = argv[++i];

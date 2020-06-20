@@ -16,10 +16,12 @@ provides=('dmenu')
 conflicts=('dmenu')
 source=(dmenu-caseinsensitive.diff
         dmenu-fuzzymatch.diff
+        dmenu-fuzzyhighlight.diff
         "$_pkgname::git+https://git.suckless.org/dmenu")
 md5sums=(
     '45abef30f540d2c800294255a26c9397'
     '0e35d7b332e741efe0cd989bc36419f8'
+    '62588a28317bec61feb496ebe087baa1'
     'SKIP')
 
 pkgver() {
@@ -33,9 +35,13 @@ prepare() {
   patch --forward --strip=1 --input="${srcdir}/dmenu-caseinsensitive.diff"
   echo ""
 
-  # echo "Adding fuzzymatch patch:"
-  # patch --forward --strip=1 --input="${srcdir}/dmenu-fuzzymatch.diff"
-  # echo ""
+  echo "Adding fuzzymatch patch:"
+  patch --forward --strip=1 --input="${srcdir}/dmenu-fuzzymatch.diff"
+  echo ""
+
+  echo "Adding fuzzyhighlight patch:"
+  patch --forward --strip=1 --input="${srcdir}/dmenu-fuzzyhighlight.diff"
+  echo ""
 
   # This package provides a mechanism to provide a custom config.h. Multiple
   # configuration states are determined by the presence of two files in
