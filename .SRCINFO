@@ -1,0 +1,20 @@
+pkgbase = dmenu-jt
+	pkgdesc = A dynamic menu for X - Patched by Johan Thorén
+	pkgver = 4.6.2.gbf3deb6
+	pkgrel = 1
+	url = http://tools.suckless.org/dmenu/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = sh
+	depends = libxinerama
+	depends = libxft
+	provides = dmenu
+	conflicts = dmenu
+	options = zipman
+	source = dmenu::git+https://git.suckless.org/dmenu
+	md5sums = SKIP
+
+pkgname = dmenu-jt
+

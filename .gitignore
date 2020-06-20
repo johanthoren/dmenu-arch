@@ -1,0 +1,6 @@
+*.tar.xz
+pkg/
+dmenu/
+src/
+config.def.h
+config.h
