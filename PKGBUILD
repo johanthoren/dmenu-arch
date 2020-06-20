@@ -20,6 +20,7 @@ source=(dmenu-caseinsensitive.diff
         dmenu-password.diff
         dmenu-preselect.diff
         dmenu-navhistory.diff
+        personal_preferences.diff
         "$_pkgname::git+https://git.suckless.org/dmenu")
 md5sums=(
     '45abef30f540d2c800294255a26c9397'
@@ -28,6 +29,7 @@ md5sums=(
     '2e17f7a95c9483e118ec60e5c078264f'
     'f2024840bf3750ebd8a9cdc128c32048'
     '4efc4c3ece55421a074b7c8185034cd2'
+    'SKIP'
     'SKIP')
 
 pkgver() {
@@ -61,9 +63,9 @@ prepare() {
   patch --forward --strip=1 --input="${srcdir}/dmenu-navhistory.diff"
   echo ""
 
-  # echo "Adding password patch:"
-  # patch --forward --strip=1 --input="${srcdir}/dmenu-password.diff"
-  # echo ""
+  echo "Adding personal_preferences patch:"
+  patch --forward --strip=1 --input="${srcdir}/personal_preferences.diff"
+  echo ""
 
   # This package provides a mechanism to provide a custom config.h. Multiple
   # configuration states are determined by the presence of two files in
