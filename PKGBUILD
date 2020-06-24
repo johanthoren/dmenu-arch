@@ -37,35 +37,26 @@ pkgver() {
     git describe --tags --long | sed 's/-/./g'
 }
 
+_patch_it() {
+    echo "Adding patch $1"
+    patch --forward --strip=1 --input="${srcdir}/${1}"
+    echo ""
+}
+
 prepare() {
-  cd $_pkgname
-  echo "Adding caseinsensitive patch:"
-  patch --forward --strip=1 --input="${srcdir}/dmenu-caseinsensitive.diff"
-  echo ""
+    cd $_pkgname
 
-  echo "Adding fuzzymatch patch:"
-  patch --forward --strip=1 --input="${srcdir}/dmenu-fuzzymatch.diff"
-  echo ""
+    patches=(dmenu-caseinsensitive.diff
+             dmenu-fuzzymatch.diff
+             dmenu-fuzzyhighlight.diff
+             dmenu-password.diff
+             dmenu-preselect.diff
+             dmenu-navhistory.diff
+             personal_preferences.diff)
 
-  echo "Adding fuzzyhighlight patch:"
-  patch --forward --strip=1 --input="${srcdir}/dmenu-fuzzyhighlight.diff"
-  echo ""
-
-  echo "Adding password patch:"
-  patch --forward --strip=1 --input="${srcdir}/dmenu-password.diff"
-  echo ""
-
-  echo "Adding preselect patch:"
-  patch --forward --strip=1 --input="${srcdir}/dmenu-preselect.diff"
-  echo ""
-
-  echo "Adding navhistory patch:"
-  patch --forward --strip=1 --input="${srcdir}/dmenu-navhistory.diff"
-  echo ""
-
-  echo "Adding personal_preferences patch:"
-  patch --forward --strip=1 --input="${srcdir}/personal_preferences.diff"
-  echo ""
+    for p in "${patches[@]}"; do
+        _patch_it "$p"
+    done
 
   # This package provides a mechanism to provide a custom config.h. Multiple
   # configuration states are determined by the presence of two files in
