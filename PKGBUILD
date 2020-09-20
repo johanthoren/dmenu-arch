@@ -3,7 +3,7 @@
 pkgname=dmenu-jt
 _pkgname=dmenu
 builddir="$(pwd)"
-pkgver=4.9.6.g9b38fda
+pkgver=5.0.0.g1a13d04
 pkgrel=1
 pkgdesc="A dynamic menu for X - Patched by Johan Thorén"
 url="http://tools.suckless.org/dmenu/"
