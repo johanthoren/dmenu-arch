@@ -27,7 +27,7 @@ source=(
     #
     # Some massaging has been done to make these patches play nice together.
     jt-patches.diff
-    "$_pkgname::git+https://git.suckless.org/dmenu"
+    "$_pkgname::git+https://git.suckless.org/dmenu#commit=1a13d0465d1a6f4f74bc5b07b04c9bd542f20ba6"
 )
 md5sums=(
     '70cf5d88c25ad053fd8a168c4d09c652'
